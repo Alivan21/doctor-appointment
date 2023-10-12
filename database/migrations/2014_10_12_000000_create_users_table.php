@@ -18,7 +18,7 @@ return new class extends Migration
       $table->string('name');
       $table->string('phone_number', 20)->nullable();
       $table->string('email')->unique();
-      $table->foreignId('role_id')->constrained()->default(0);
+      $table->unsignedBigInteger('role_id')->nullable()->default(3);
       $table->timestamp('email_verified_at')->nullable();
       $table->string('password');
       $table->rememberToken();

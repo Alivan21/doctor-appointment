@@ -51,11 +51,15 @@
                 <td class="px-6 py-4">
                   {{ $item->phone_number }}
                 </td>
-                <td class="px-6 py-4">
+                <td class="px-6 py-4 flex">
                   <a href="{{ route('doctors.edit', $item->id) }}"
                     class="mr-2 font-medium text-blue-600 hover:underline">Edit</a>
-                  <a href="{{ route('doctors.destroy', $item->id) }}"
-                    class="font-medium text-red-600 hover:underline">Delete</a>
+                  <form method="POST" action="{{ route('doctors.destroy', $item->id) }}">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="font-medium text-red-600 hover:underline"
+                      onclick="return confirm('Are you sure you want to delete this doctor?')">Delete</button>
+                  </form>
                 </td>
               </tr>
             @endforeach

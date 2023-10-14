@@ -36,6 +36,16 @@
               autocomplete="username" value="{{ $user->email }}" />
           </div>
 
+          <div class="relative">
+            <x-input-label for="password" :value="__('Password')" />
+            <x-text-input id="password" name="password" type="password" class="mt-1 block w-full"
+              autocomplete="password" value="{{ $user->password }}" />
+            <button type="button" class="absolute right-2 top-8 h-6 w-6 text-gray-400"
+              onclick="togglePasswordVisibility('password')">
+              <i id="password-toggle-icon" class="far fa-eye-slash"></i>
+            </button>
+          </div>
+
           <div>
             <x-input-label for="phone_number" :value="__('Phone Number')" />
             <x-text-input id="phone_number" name="phone_number" type="text" class="mt-1 block w-full"
@@ -54,4 +64,20 @@
       </section>
     </div>
   </div>
+  <script>
+    function togglePasswordVisibility(inputId) {
+      const passwordInput = document.getElementById(inputId);
+      const passwordToggleIcon = document.getElementById('password-toggle-icon');
+
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        passwordToggleIcon.classList.remove('fa-eye-slash');
+        passwordToggleIcon.classList.add('fa-eye');
+      } else {
+        passwordInput.type = 'password';
+        passwordToggleIcon.classList.remove('fa-eye');
+        passwordToggleIcon.classList.add('fa-eye-slash');
+      }
+    }
+  </script>
 </x-app-layout>

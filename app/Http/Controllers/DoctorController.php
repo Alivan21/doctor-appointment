@@ -89,14 +89,6 @@ class DoctorController extends Controller
    */
   public function update(Request $request, User $user)
   {
-    $request->validate(
-      [
-        'name' => 'required',
-        'phone_number' => 'required',
-        'email' => 'required|email|unique:users',
-        'password' => 'required|min:6',
-      ]
-    );
     $user->update($request->all());
 
     // Set role_id to 2
@@ -116,7 +108,7 @@ class DoctorController extends Controller
    */
   public function destroy(User $user)
   {
-    $user = User::where('id', $user->id)->delete();
+    $user->delete();
     return redirect()->route('doctor')->with('success', 'Doctor deleted successfully');
   }
 }

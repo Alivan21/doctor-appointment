@@ -20,17 +20,17 @@ Route::get('/', function () {
   return view('auth.login');
 });
 
-Route::group(['middleware' => ['auth']], function () {
-  Route::get('/dashboard', function () {
-    return view('dashboard');
-  })->name('dashboard');
+Route::group(['middleware' => 'role: 1'], function () {
+  Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard');
+  })->name('admin.dashboard');
 
   Route::get('/admin/doctor', [DoctorController::class, 'index'])->name('doctor');
   Route::get('/admin/doctors/create', [DoctorController::class, 'create'])->name('doctors.create');
   Route::post('/admin/doctors', [DoctorController::class, 'store'])->name('doctors.store');
   Route::get('/admin/doctors/{user}/edit', [DoctorController::class, 'edit'])->name('doctors.edit');
   Route::put('/admin/doctors/{user}', [DoctorController::class, 'update'])->name('doctors.update');
-  Route::delete('/admin/doctors/{doctor}', [DoctorController::class, 'destroy'])->name('doctors.destroy');
+  Route::delete('/admin/doctors/{user}', [DoctorController::class, 'destroy'])->name('doctors.destroy');
 
   Route::get('/admin/client', [ClientController::class, 'index'])->name('client');
 

@@ -41,7 +41,15 @@ Route::group(['middleware' => 'role: 1'], function () {
   Route::get('/admin/session/{session}/edit', [SessionController::class, 'edit'])->name('session.edit');
   Route::put('/admin/session/{session}', [SessionController::class, 'update'])->name('session.update');
   Route::delete('/admin/session/{session}', [SessionController::class, 'destroy'])->name('session.destroy');
+});
 
+Route::group(['middleware' => 'role: 3'], function () {
+  Route::get('/user/dashboard', function () {
+    return view('user.dashboard');
+  })->name('user.dashboard');
+});
+
+Route::group(['middleware' => 'role:1,2,3'], function () {
   Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
   Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
   Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

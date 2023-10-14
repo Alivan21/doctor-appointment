@@ -6,7 +6,8 @@
         <!-- Logo -->
         <div class="shrink-0 flex items-center">
           <a href="{{ route('admin.dashboard') }}">
-            <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+            <img src="{{ asset('favicon.png') }}" alt="" srcset=""
+              class="block h-9 w-auto fill-current text-gray-800">
           </a>
         </div>
 
@@ -20,6 +21,9 @@
           </x-nav-link>
           <x-nav-link :href="route('client')" :active="request()->routeIs('client*')">
             {{ __('Patient') }}
+          </x-nav-link>
+          <x-nav-link :href="route('session')" :active="request()->routeIs('session*')">
+            {{ __('Session') }}
           </x-nav-link>
         </div>
       </div>
@@ -81,6 +85,15 @@
     <div class="pt-2 pb-3 space-y-1">
       <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('dashboard')">
         {{ __('Dashboard') }}
+      </x-responsive-nav-link>
+      <x-responsive-nav-link :href="route('doctor')" :active="request()->routeIs('doctor*')">
+        {{ __('Doctor') }}
+      </x-responsive-nav-link>
+      <x-responsive-nav-link :href="route('client')" :active="request()->routeIs('client*')">
+        {{ __('Patient') }}
+      </x-responsive-nav-link>
+      <x-responsive-nav-link :href="route('session')" :active="request()->routeIs('session*')">
+        {{ __('Session') }}
       </x-responsive-nav-link>
     </div>
 

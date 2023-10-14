@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Commons\Enums\UserRoleEnum;
 use App\Models\Role;
+use App\Models\Session;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -38,6 +39,7 @@ class DatabaseSeeder extends Seeder
         'role_name' => 'Client'
       ]
     ]);
+
     User::insert([
       [
         'name' => 'Admin',
@@ -59,6 +61,14 @@ class DatabaseSeeder extends Seeder
         'email' => 'user@example.com',
         'password' => bcrypt('password'),
         'role_id' => UserRoleEnum::CLIENT,
+      ]
+    ]);
+
+    Session::insert([
+      [
+        'user_id' => 2,
+        'start_time' => '2021-01-01 08:00:00',
+        'end_time' => '2021-01-01 12:00:00',
       ]
     ]);
   }

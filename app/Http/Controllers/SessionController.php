@@ -15,7 +15,7 @@ class SessionController extends Controller
    */
   public function index()
   {
-    $sessions = Session::all()->sortBy('start_time')->paginate(10);
+    $sessions = Session::paginate(10);
 
     return view('admin.session.session', compact('sessions'));
   }
@@ -44,7 +44,7 @@ class SessionController extends Controller
       [
         'start_time' => 'required',
         'end_time' => 'required|different:start_time',
-        'doctor_id' => 'required',
+        'user_id' => 'required',
       ]
     );
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class DoctorController extends Controller
 {
@@ -49,7 +50,14 @@ class DoctorController extends Controller
     );
 
     // Create a new user instance and set role_id to 2
-    $user = new User($request->all());
+    // Create a new user instance
+    $user = new User([
+      'name' => $request->input('name'),
+      'phone_number' => $request->input('phone_number'),
+      'email' => $request->input('email'),
+      'password' => Hash::make($request->input('password')),
+      'role_id' => 2,
+    ]);
     $user->role_id = 2;
 
     // Save the user to the database

@@ -39,7 +39,7 @@
           <div class="relative">
             <x-input-label for="password" :value="__('Password')" />
             <x-text-input id="password" name="password" type="password" class="mt-1 block w-full"
-              autocomplete="password" value="{{ $user->password }}" />
+              autocomplete="password" value="" />
             <button type="button" class="absolute right-2 top-8 h-6 w-6 text-gray-400"
               onclick="togglePasswordVisibility('password')">
               <i id="password-toggle-icon" class="far fa-eye-slash"></i>

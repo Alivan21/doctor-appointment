@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Commons\Enums\UserRoleEnum;
+use App\Models\Appointment;
 use App\Models\Role;
 use App\Models\Session;
 use App\Models\User;
@@ -69,6 +70,15 @@ class DatabaseSeeder extends Seeder
         'user_id' => 2,
         'start_time' => '2021-01-01 08:00:00',
         'end_time' => '2021-01-01 12:00:00',
+      ]
+    ]);
+
+    Appointment::insert([
+      [
+        'name' => 'Appointment 1',
+        'user_id' => 3,
+        'doctor_id' => 2,
+        'appointment_date' => '2021-01-01 08:00:00',
       ]
     ]);
   }

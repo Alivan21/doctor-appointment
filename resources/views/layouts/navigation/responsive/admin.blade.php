@@ -10,3 +10,6 @@
 <x-responsive-nav-link :href="route('session')" :active="request()->routeIs('session*')">
   {{ __('Session') }}
 </x-responsive-nav-link>
+<x-responsive-nav-link :href="route('appointment')" :active="request()->routeIs('appointment*')">
+  {{ __('Appointment') }}
+</x-responsive-nav-link>

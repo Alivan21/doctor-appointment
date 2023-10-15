@@ -31,6 +31,8 @@ class AuthenticatedSessionController extends Controller
       return redirect()->route('admin.dashboard');
     } elseif (Auth::user() && Auth::user()->role_id == 3) {
       return redirect()->route('user.dashboard');
+    } elseif (Auth::user() && Auth::user()->role_id == 2) {
+      return redirect()->route('doctor.dashboard');
     } else {
       Auth::guard('web')->logout();
       return redirect()->route('login')->with('status', 'You are not authorized to access this page.');

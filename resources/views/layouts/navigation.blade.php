@@ -10,6 +10,11 @@
               <img src="{{ asset('favicon.png') }}" alt="" srcset=""
                 class="block h-9 w-auto fill-current text-gray-800">
             </a>
+          @elseif (auth()->user()->role_id == 2)
+            <a href="{{ route('doctor.dashboard') }}">
+              <img src="{{ asset('favicon.png') }}" alt="" srcset=""
+                class="block h-9 w-auto fill-current text-gray-800">
+            </a>
           @else
             <a href="{{ route('admin.dashboard') }}">
               <img src="{{ asset('favicon.png') }}" alt="" srcset=""
@@ -23,6 +28,8 @@
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
           @if (auth()->user()->role_id == 3)
             @include('layouts.navigation.user')
+          @elseif(auth()->user()->role_id == 2)
+            @include('layouts.navigation.doctor')
           @else
             @include('layouts.navigation.admin')
           @endif
@@ -85,6 +92,8 @@
   <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
     @if (auth()->user()->role_id == 3)
       @include('layouts.navigation.responsive.user')
+    @elseif (auth()->user()->role_id == 2)
+      @include('layouts.navigation.responsive.doctor')
     @else
       @include('layouts.navigation.responsive.admin')
     @endif

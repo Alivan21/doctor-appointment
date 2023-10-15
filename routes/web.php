@@ -46,6 +46,16 @@ Route::group(['middleware' => 'role: 1'], function () {
   Route::get('/admin/appointment', [AppointmentController::class, 'adminIndex'])->name('appointment');
 });
 
+Route::group(['middleware' => 'role: 2'], function () {
+  Route::get('/doctor/dashboard', function () {
+    return view('doctor.dashboard');
+  })->name('doctor.dashboard');
+
+  Route::get('/doctor/session', [SessionController::class, 'doctorIndex'])->name('doctor.session');
+  Route::get('/doctor/appointment', [AppointmentController::class, 'doctorIndex'])->name('doctor.appointment');
+  Route::get('/doctor/patient', [AppointmentController::class, 'doctorPatientIndex'])->name('doctor.patient');
+});
+
 Route::group(['middleware' => 'role: 3'], function () {
   Route::get('/user/dashboard', function () {
     return view('user.dashboard');

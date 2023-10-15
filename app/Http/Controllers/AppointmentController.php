@@ -33,7 +33,15 @@ class AppointmentController extends Controller
     $current_user_id = auth()->user()->id;
     $appointments = Appointment::where('doctor_id', $current_user_id)->paginate(10);
 
-    return view("doctor.booking.index", compact('appointments'));
+    return view("doctor.appointment.booking", compact('appointments'));
+  }
+
+  public function doctorPatientIndex()
+  {
+    $current_user_id = auth()->user()->id;
+    $appointments = Appointment::where('doctor_id', $current_user_id)->paginate(10);
+
+    return view("doctor.patient.patient", compact('appointments'));
   }
 
   /**

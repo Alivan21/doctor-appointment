@@ -20,6 +20,15 @@ class SessionController extends Controller
     return view('admin.session.session', compact('sessions'));
   }
 
+  public function doctorIndex()
+  {
+    $current_user_id = auth()->user()->id;
+
+    $sessions = Session::where('user_id', $current_user_id)->paginate(10);
+
+    return view('doctor.session.session', compact('sessions'));
+  }
+
   /**
    * Show the form for creating a new resource.
    *
